@@ -1,0 +1,20 @@
+<VirtualHost *:80>
+  ServerName <%= site %>
+  ServerName barebones
+
+  WSGIDaemonProcess <%= site %> processes=1 threads=15
+  WSGIProcessGroup <%= site %>
+  WSGIScriptAlias / <%= wsgiDir %>/main.wsgi
+  <Directory <%= wsgiDir %>>
+    Order allow,deny
+    Allow from all
+  </Directory>
+
+  Alias /static-files "<%= staticFilesDir %>"
+  <Directory "<%= staticFilesDir %>">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride None
+    Order allow,deny
+    Allow from all
+  </Directory>
+</VirtualHost>
