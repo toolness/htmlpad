@@ -4,7 +4,7 @@
 
   WSGIDaemonProcess <%= site %> processes=1 threads=15
   WSGIProcessGroup <%= site %>
-  WSGIScriptAlias / <%= wsgiDir %>/main.wsgi
+  WSGIScriptAlias / <%= wsgiDir %>/htmlpad.py
   <Directory <%= wsgiDir %>>
     Order allow,deny
     Allow from all
