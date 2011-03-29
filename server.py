@@ -33,7 +33,11 @@ def static_file(env, start, static_files_dir):
 def application(env, start):
     env['htmlpad.etherpad'] = 'etherpad.mozilla.org:9000'
     static_files_dir = os.path.join('htmlpad.org', 'static-files')
-    
+
+    # Clearing the template cache on each request allows developers
+    # to iterate quickly.
+    htmlpad.template_cache = {}
+
     if env['PATH_INFO'].startswith('/static-files/'):
         shift_path_info(env)
         return static_file(env, start, static_files_dir)

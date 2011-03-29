@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Edit Pad: %(name)s</title>
+<style>
+body {
+    font-family: Baskerville, serif;
+    width: 1024px;
+    margin: 0 auto;
+}
+
+a:hover {
+    background: #f0f0f0;
+}
+
+iframe#etherpad {
+    border: none;
+    padding-left: 10px;
+    float: right;
+}
+
+</style>
+<script src="/jquery.js"></script>
+<iframe id="etherpad" width="720" src="%(edit_pad_url)s"></iframe>
+
+<div class="instructions"><p>Edit the pad on the right to build your HTML page (click the <em>Create Pad</em> button if necessary). Here's a simple page you can copy-and-paste into the pad to get started:</p>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;My First Web Page&lt;/title&gt;
+&lt;p&gt;Here is my first Web page!&lt;/p&gt;</pre> 
+<p>Once you've written something, you can view your page at <a id="view" href="%(view_pad_url)s" target="view">%(hostname)s%(view_pad_url)s</a>.</p>
+<p>Saving happens automatically, so don't worry about that.</p>
+<p>Keep switching back and forth between the editor and the view to rapidly iterate on your design. Give the editor link to a friend if you'd like to collaborate in real-time! 
+</p></div>
+
+
+<script>
+function resize() {
+    $("#etherpad").height($(window).height() - 32);
+}
+
+$(window).resize(resize);
+$(window).ready(resize);
+</script>
