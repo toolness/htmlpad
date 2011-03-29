@@ -39,7 +39,7 @@ iframe#etherpad {
 &lt;meta charset="utf-8"&gt;
 &lt;title&gt;My First Web Page&lt;/title&gt;
 &lt;p&gt;Here is my first Web page!&lt;/p&gt;</pre> 
-<p>Once you've written something, you can view your page at <a id="view" href="%(view_pad_url)s" target="view">%(view_pad_url)s</a>.</p>
+<p>Once you've written something, you can view your page at <a id="view" href="%(view_pad_url)s" target="view">%(hostname)s%(view_pad_url)s</a>.</p>
 <p>Saving happens automatically, so don't worry about that.</p>
 <p>Keep switching back and forth between the editor and the view to rapidly iterate on your design. Give the editor link to a friend if you'd like to collaborate in real-time! 
 </p></div>
@@ -71,7 +71,7 @@ a:hover {
 </style>
 <title>Pad %(name)s not found!</title>
 <h1>Alas.</h1>
-<p>The pad <code>%(name)s</code> doesn't exist yet, but you can create it by visiting <a target="edit" href="%(pad_url)s">%(pad_url)s</a>. For more help, visit <a href="http://htmlpad.org/">htmlpad.org</a>.</p>
+<p>The pad <code>%(name)s</code> doesn't exist yet, but you can create it by visiting <a target="edit" href="%(pad_url)s">%(hostname)s%(pad_url)s</a>. For more help, visit <a href="/">%(hostname)s</a>.</p>
 """
 
 # Also see PAD_SQLMETA for info on most recent changes to etherpad docs.
@@ -103,7 +103,8 @@ def application(environ, start_response):
         edit_page = EDIT_TEMPLATE % {
             'name': padname,
             'edit_pad_url': edit_pad_url,
-            'view_pad_url': 'http://htmlpad.org/%s/' % padname
+            'view_pad_url': '/%s/' % padname,
+            'hostname': environ['HTTP_HOST']
         }
         start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
         return [edit_page]
@@ -125,7 +126,8 @@ def application(environ, start_response):
     else:
         failtext = NOT_FOUND_TEMPLATE % {
           'name': padname,
-          'pad_url': 'http://htmlpad.org/%s/edit' % padname
+          'pad_url': '/%s/edit' % padname,
+          'hostname': environ['HTTP_HOST']
         }
         # Add some padding so Google Chrome doesn't override our
         # 404 with its own.
