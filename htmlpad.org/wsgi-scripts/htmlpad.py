@@ -6,7 +6,6 @@ import mimetypes
 # /foo/rev.34/edit, which is impossible.
 pad_re = re.compile(r'^/(?P<name>[A-Za-z\-0-9]+)(?P<ext>\.(css|js|html|txt))?(/rev\.(?P<rev>[0-9]+))?(?P<edit>/edit)?(?P<trailing_slash>|/)?$')
 
-pad_server = "etherpad.mozilla.org:9000"
 pad_text_url = "/ep/pad/export/%s/latest?format=txt"
 pad_rev_text_url = "/ep/pad/export/%s/rev.%d?format=txt"
 
@@ -78,6 +77,7 @@ a:hover {
 # Also see PAD_SQLMETA for info on most recent changes to etherpad docs.
 
 def application(environ, start_response):
+    pad_server = environ['htmlpad.etherpad']
     path = environ['PATH_INFO']
     if path == '/':
         path = "/instructions/"

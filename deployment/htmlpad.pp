@@ -1,4 +1,5 @@
 $site = 'htmlpad.org'
+$etherpad = 'etherpad.mozilla.org:9000'
 $rootDir = '/home/atul/htmlpad'
 $apacheDir = '/etc/apache2'
 $varDir = "/var/$site"

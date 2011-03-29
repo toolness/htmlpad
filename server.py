@@ -31,6 +31,7 @@ def static_file(env, start, static_files_dir):
     return error_404(env, start)
 
 def application(env, start):
+    env['htmlpad.etherpad'] = 'etherpad.mozilla.org:9000'
     static_files_dir = os.path.join('htmlpad.org', 'static-files')
     
     if env['PATH_INFO'].startswith('/static-files/'):

@@ -2,6 +2,7 @@
   ServerName <%= site %>
   ServerName barebones
 
+  SetEnv htmlpad.etherpad <%= etherpad %>
   WSGIDaemonProcess <%= site %> processes=1 threads=15
   WSGIProcessGroup <%= site %>
   WSGIScriptAlias / <%= wsgiDir %>/htmlpad.py
