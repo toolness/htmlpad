@@ -1,8 +1,8 @@
 $site = 'htmlpad.org'
 $etherpad = 'etherpad.mozilla.org:9000'
-$rootDir = '/home/atul/htmlpad'
+$rootDir = '/var/htmlpad'
 $apacheDir = '/etc/apache2'
-$varDir = "/var/$site"
+$varDir = "$rootDir/$site"
 $wsgiDir = "$varDir/wsgi-scripts"
 $staticFilesDir = "$varDir/static-files"
 
@@ -29,9 +29,4 @@ file { "$apacheDir/sites-available/$site":
 file { "$apacheDir/sites-enabled/001-$site":
   ensure => link,
   target => "$apacheDir/sites-available/$site"
-}
-
-file { "$varDir":
-  ensure => link,
-  target => "$rootDir/$site"
 }
