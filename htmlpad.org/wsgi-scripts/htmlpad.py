@@ -74,8 +74,6 @@ a:hover {
 <p>The pad <code>%(name)s</code> doesn't exist yet, but you can create it by visiting <a target="edit" href="%(pad_url)s">%(hostname)s%(pad_url)s</a>. For more help, visit <a href="/">%(hostname)s</a>.</p>
 """
 
-# Also see PAD_SQLMETA for info on most recent changes to etherpad docs.
-
 def application(environ, start_response):
     pad_server = environ['htmlpad.etherpad']
     path = environ['PATH_INFO']
