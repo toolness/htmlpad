@@ -23,7 +23,7 @@ file { "$apacheDir/sites-available/$site":
   ensure => file,
   owner => 'root',
   group => 'root',
-  content => template("$rootDir/deployment/$site.erb"),
+  content => template("$rootDir/deployment/apache-site.conf.erb"),
 }
 
 file { "$apacheDir/sites-enabled/001-$site":
