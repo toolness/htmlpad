@@ -24,7 +24,8 @@ def application(environ, start_response):
     pad_server = environ['htmlpad.etherpad']
     path = environ['PATH_INFO']
     if path == '/':
-        path = "/instructions/"
+        start_response('200 OK', [('Content-Type', 'text/html; charset=utf-8')])
+        return get_template('index.html') % {'hostname': environ['HTTP_HOST']}
     if path == '/jquery.js':
         start_response('302 Moved Temporarily',
                        [('Location', 'static-files/jquery.js')])

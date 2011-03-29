@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+    font-family: Baskerville, serif;
+    width: 30em;
+    margin: 0 auto;
+}
+a:hover {
+    background: #f0f0f0;
+}
+#instructions {
+    display: none;
+}
+#fail {
+    display: none;
+    color: firebrick;
+}
+input#name {
+    border: 1px dotted gray;
+    font-family: Helvetica, sans-serif;
+    font-size: 14pt;
+}
+input:focus {
+    outline-width: 0;
+}
+</style>
+<script src="/jquery.js"></script>
+<title>Welcome to %(hostname)s!</title>
+<h1>Welcome to %(hostname)s!</h1>
+<p>You can use this website to easily create Web pages, collaborate on them with friends, and share them.</p>
+<p>Just start typing the name of a page you'd like to create below.</p>
+<input autofocus type="text" id="name"></input>
+<div id="instructions">
+<p>Create and edit the pad at <a id="etherpad" href="" target="edit"></a> to build and view your HTML page.
+</div>
+<div id="fail">
+<p>Sorry, page names can only contain upper and lowercase letters, hyphens, and numbers.</p>
+</div>
+<script>
+$(window).ready(function() {
+    $("#name").val("");
+    $("#name").keyup(function() {
+        var pad = $(this).val();
+        if (pad.length == 0) {
+          $("#instructions").slideUp();
+          $("#fail").slideUp();
+        } else {
+          if (pad.match(/^[A-Za-z\-0-9]+$/)) {
+            var path = "/" + pad + "/edit";
+            var etherpadURL = "http://%(hostname)s" + path;
+            $("#instructions #etherpad").attr("href", path).text(etherpadURL);
+            $("#fail").slideUp();
+            $("#instructions").slideDown();
+          } else {
+            $("#instructions").slideUp();
+            $("#fail").slideDown();
+          }
+        }
+    });
+});
+</script>
