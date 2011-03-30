@@ -22,12 +22,9 @@ This project has no dependencies aside from Python 2.5. Just run `server.py` and
 
 ### Deployment ###
 
-The [Puppet](http://docs.puppetlabs.com/learning/) configuration files used for deployment on [htmlpad.org](http://htmlpad.org) are in the `deployment` directory. They assume a bare Ubuntu maverick server (10.10) that has Puppet 2.6.1 or later installed. The steps to deploy are:
+See the [hackasaurus-puppet-data][] repository for Puppet deployment files.
 
-1. Check out the HTMLpad repository to `/var/htmlpad`.
+Note that you may want to also add an entry to your computer's `/etc/hosts` file to point htmlpad.org to the server that you're deploying to, since the deployment configures a virtual host for that domain.
 
-2. Run `sudo puppet /var/htmlpad/deployment/htmlpad.pp`.
-
-You may want to also add an entry to your computer's `/etc/hosts` file to point htmlpad.org to the server that you're deploying to, since the apache configuration in the deployment sets up a virtual host for that domain.
-
+  [hackasaurus-puppet-data]: https://github.com/toolness/hackasaurus-puppet-data
   [Atul Varma]: http://toolness.com

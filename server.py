@@ -4,7 +4,7 @@ from wsgiref.simple_server import make_server
 from wsgiref.util import shift_path_info, FileWrapper
 from mimetypes import guess_type
 
-sys.path.append(os.path.join('htmlpad.org', 'wsgi-scripts'))
+sys.path.append('wsgi-scripts')
 
 import htmlpad
 
@@ -32,7 +32,7 @@ def static_file(env, start, static_files_dir):
 
 def application(env, start):
     env['htmlpad.etherpad'] = 'etherpad.mozilla.org:9000'
-    static_files_dir = os.path.join('htmlpad.org', 'static-files')
+    static_files_dir = 'static-files'
 
     # Clearing the template cache on each request allows developers
     # to iterate quickly.
