@@ -24,7 +24,5 @@ This project has no dependencies aside from Python 2.5. Just run `server.py` and
 
 See the [hackasaurus-puppet-data][] repository for Puppet deployment files.
 
-Note that you may want to also add an entry to your computer's `/etc/hosts` file to point htmlpad.org to the server that you're deploying to, since the deployment configures a virtual host for that domain.
-
   [hackasaurus-puppet-data]: https://github.com/toolness/hackasaurus-puppet-data
   [Atul Varma]: http://toolness.com
