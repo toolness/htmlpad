@@ -24,7 +24,7 @@ Just run `python manage.py runserver` and open your browser to [http://localhost
 
 While HTMLpad is a Django application, you don't need to have Django installed system-wide. That's because running `manage.py` automatically creates a virtual environment, downloads and installs the appropriate version of Django and any other dependencies, and activates the virtual environment for the duration of the script.
 
-However, this can sometimes result in a broken virtual environment, particularly if `manage.py` is aborted while it's still setting things up. If anything goes amiss, try wiping the `.virtualenv` directory and try again.
+However, this can sometimes result in a broken virtual environment, particularly if `manage.py` is aborted while it's still setting things up. If anything goes amiss, try wiping the `.virtualenv` directory and starting over.
 
 ### Deployment ###
 
