@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+body {
+    font-family: Baskerville, serif;
+    width: 30em;
+    margin: 0 auto;
+}
+
+a:hover {
+    background: #f0f0f0;
+}
+</style>
+<title>Pad {{ name }} not found!</title>
+<h1>Alas.</h1>
+<p>The pad <code>{{ name }}</code> doesn't exist yet, but you can create it by visiting <a target="edit" href="{{ edit_pad_url }}">{{ request.META.HTTP_HOST }}{{ edit_pad_url }}</a>. For more help, visit <a href="/">{{ request.META.HTTP_HOST }}</a>.</p>

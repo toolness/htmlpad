@@ -2,7 +2,7 @@
 
 By [Atul Varma][]
 
-This is a trivial wsgi application that, for any URL path, serves the
+This is a simple Web application that, for any URL path, serves the
 contents of an Etherpad with the same path with the MIME type
 `text/html`.
 
@@ -18,7 +18,7 @@ out, seeing how it looks in the browser, and sharing it with others.
 
 ### Installation ###
 
-This project has no dependencies aside from Python 2.5. Just run `server.py` and open your browser to [http://localhost:8000](http://localhost:8000).
+Just run `python manage.py runserver` and open your browser to [http://localhost:8000](http://localhost:8000).
 
 ### Deployment ###
 

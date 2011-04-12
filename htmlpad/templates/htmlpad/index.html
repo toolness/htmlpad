@@ -25,9 +25,9 @@ input:focus {
     outline-width: 0;
 }
 </style>
-<script src="/jquery.js"></script>
-<title>Welcome to %(hostname)s!</title>
-<h1>Welcome to %(hostname)s!</h1>
+<script src="{{ STATIC_URL }}js/jquery.min.js"></script>
+<title>Welcome to {{ request.META.HTTP_HOST }}!</title>
+<h1>Welcome to {{ request.META.HTTP_HOST }}!</h1>
 <p>You can use this website to easily create Web pages, collaborate on them with friends, and share them.</p>
 <p>Just start typing the name of a page you'd like to create below.</p>
 <input autofocus type="text" id="name"></input>
@@ -47,8 +47,9 @@ $(window).ready(function() {
           $("#fail").slideUp();
         } else {
           if (pad.match(/^[A-Za-z\-0-9]+$/)) {
-            var path = "/" + pad + "/edit";
-            var etherpadURL = "http://%(hostname)s" + path;
+            //var path = "/{{ HTMLPAD_ROOT }}" + pad + "/edit";
+            var path = "{{ edit_pad_template }}".replace("{{ ep_arg }}", pad);
+            var etherpadURL = "http://{{ request.META.HTTP_HOST }}" + path;
             $("#instructions #etherpad").attr("href", path).text(etherpadURL);
             $("#fail").slideUp();
             $("#instructions").slideDown();
