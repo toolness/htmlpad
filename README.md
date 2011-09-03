@@ -16,19 +16,17 @@ This effectively allows people to easily collaborate on writing HTML,
 and it provides a very fast feedback loop between trying something
 out, seeing how it looks in the browser, and sharing it with others.
 
-### Installation ###
+### Quick Start ###
 
-Just run `python manage.py runserver` and open your browser to [http://localhost:8000](http://localhost:8000). As you save changes to HTMLpad's source code, the server will automatically apply them, allowing you to iterate quickly.
+To get started, run this at your shell prompt:
 
-### Troubleshooting ###
+    git clone --recursive git://github.com/hackasaurus/htmlpad.git
+    cd htmlpad/htmlpad_dot_org
+    python manage.py runserver
 
-While HTMLpad is a Django application, you don't need to have Django installed system-wide. That's because running `manage.py` automatically creates a virtual environment, downloads and installs the appropriate version of Django and any other dependencies, and activates the virtual environment for the duration of the script.
-
-However, this can sometimes result in a broken virtual environment, particularly if `manage.py` is aborted while it's still setting things up. If anything goes amiss, try wiping the `.virtualenv` directory and starting over.
+Then open your browser to [http://localhost:8000](http://localhost:8000). As you save changes to HTMLpad's source code, the server will automatically apply them, allowing you to iterate quickly.
 
 ### Deployment ###
-
-You can run `python setup.py install` to install the `htmlpad` Django application package into any environment, including virtual ones.
 
 This Django application assumes the following custom settings variables:
 
