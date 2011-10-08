@@ -142,4 +142,5 @@ LOGGING = {
 }
 
 HTMLPAD_ROOT = ''
-ETHERPAD_HOST = 'etherpad.mozilla.org:9000'
+ETHERPAD_PROTOCOL = 'https'
+ETHERPAD_HOST = 'etherpad.mozilla.org'
