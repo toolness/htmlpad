@@ -14,4 +14,5 @@ class HtmlpadTests(TestCase):
 class EtherpadTests(TestCase):
     def test_get_edit_url(self):
         self.assertEqual(etherpad.get_edit_url('u'),
-                         'http://%s/u' % settings.ETHERPAD_HOST)
+                         '%s://%s/u' % (settings.ETHERPAD_PROTOCOL,
+                                        settings.ETHERPAD_HOST))
