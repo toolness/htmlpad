@@ -1,4 +1,4 @@
-## HTMLpad ##
+## HTMLpad
 
 By [Atul Varma][]
 
@@ -16,29 +16,59 @@ This effectively allows people to easily collaborate on writing HTML,
 and it provides a very fast feedback loop between trying something
 out, seeing how it looks in the browser, and sharing it with others.
 
-### Quick Start ###
+## Requirements
 
-To get started, run this at your shell prompt:
+* Python 2.7
+* [pip and virtualenv](http://stackoverflow.com/q/4324558)
 
-    git clone --recursive git://github.com/hackasaurus/htmlpad.git
-    cd htmlpad/htmlpad_dot_org
-    python manage.py runserver
+## Quick Start
 
-Then open your browser to [http://localhost:8000](http://localhost:8000). As you save changes to HTMLpad's source code, the server will automatically apply them, allowing you to iterate quickly.
+```
+virtualenv venv
 
-### Deployment ###
+# On Windows, replace the following line with 'venv\Scripts\activate'.
+source venv/bin/activate
 
-This Django application assumes the following custom settings variables:
+pip install -r requirements.txt
+python manage.py runserver
+```
 
-* `HTMLPAD_ROOT` is the string prefix, including any trailing slash but no leading slash, of the HTMLpad instance on the Web server. It can be an empty string. For example, if a user browses to http://foo.com/mypad/ to access your HTMLpad's root, then the setting's value is `'mypad/'`.
+Then open your browser to http://localhost:8000. As you save changes to
+HTMLpad's source code, the server will automatically apply them, allowing
+you to iterate quickly.
 
-* `ETHERPAD_HOST` is the Etherpad instance that your HTMLpad delegates to, formatted as a hostname:port string.
+## Environment Variables
 
-See the [hackasaurus-puppet-data][] repository for Puppet deployment files.
+Unlike traditional Django settings, we use environment variables
+for configuration to be compliant with [twelve-factor][] apps.
+
+**Note:** When an environment variable is described as representing a
+boolean value, if the variable exists with *any* value (even the empty
+string), the boolean is true; otherwise, it's false.
+
+**Note:** When running `manage.py`, `DEBUG` is enabled.
+
+* `DEBUG` is a boolean value that indicates whether debugging is enabled
+  (this should always be false in production).
+* `AUTO_COLLECTSTATIC` is a boolean that determines whether to
+  automatically run `manage.py collectstatic` when the WSGI app is
+  instantiated. Useful for certain production deployments, such as Heroku.
+* `HTMLPAD_ROOT` is the string prefix, including any trailing slash but no
+  leading slash, of the HTMLpad instance on the Web server. For example,
+  if a user browses to http://foo.com/mypad/ to access your HTMLpad's root,
+  then the setting's value is `'mypad/'`. Defaults to an empty string.
+* `ETHERPAD_PROTOCOL` is the protocol of the Etherpad instance that
+  your HTMLpad delegates to. Defaults to 'https'.
+* `ETHERPAD_HOST` is the Etherpad instance that your HTMLpad delegates to,
+  formatted as a hostname:port string. Defaults to 'etherpad.mozilla.org'.
 
 ### Security Considerations ###
 
-Because the HTMLpad simply delivers universally-writeable Etherpad content as raw HTML, an HTMLpad instance should probably be served on its own dedicated domain.
+Because the HTMLpad simply delivers universally-writeable Etherpad content
+as raw HTML, an HTMLpad instance should probably be served on its own
+dedicated domain.
 
-  [hackasaurus-puppet-data]: https://github.com/toolness/hackasaurus-puppet-data
+<!-- Links -->
+
+  [twelve-factor]: http://12factor.net/
   [Atul Varma]: http://toolness.com

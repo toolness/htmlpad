@@ -1,12 +1,23 @@
 # Django settings for htmlpad_dot_org project.
 
 import os
+import sys
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 path = lambda *a: os.path.join(ROOT, *a)
 
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
+def set_default_env(**kwargs):
+    for key in kwargs:
+        if not key in os.environ:
+            os.environ[key] = kwargs[key]
+
+if sys.argv[:1] == ['manage.py']:
+    # Quick-start development settings - unsuitable for production
+    set_default_env(
+        DEBUG='indeed',
+    )
+
+DEBUG = TEMPLATE_DEBUG = 'DEBUG' in os.environ
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -143,6 +154,12 @@ LOGGING = {
     }
 }
 
-HTMLPAD_ROOT = ''
-ETHERPAD_PROTOCOL = 'https'
-ETHERPAD_HOST = 'etherpad.mozilla.org'
+set_default_env(
+    HTMLPAD_ROOT='',
+    ETHERPAD_PROTOCOL='https',
+    ETHERPAD_HOST='etherpad.mozilla.org',
+)
+
+HTMLPAD_ROOT = os.environ['HTMLPAD_ROOT']
+ETHERPAD_PROTOCOL = os.environ['ETHERPAD_PROTOCOL']
+ETHERPAD_HOST = os.environ['ETHERPAD_HOST']
