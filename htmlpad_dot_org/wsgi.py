@@ -1,12 +1,15 @@
-# manage adds more directories to the Python path.
-import sys
 import os
+import sys
+import subprocess
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "htmlpad_dot_org.settings")
 
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+if 'AUTO_COLLECTSTATIC' in os.environ:
+    subprocess.Popen([
+        sys.executable, 'manage.py', 'collectstatic', '--noinput'
+    ], cwd=os.path.dirname(os.path.dirname(__file__))).wait()
 
-import manage
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
 
-import django.core.handlers.wsgi
 from dj_static import Cling
-
-application = Cling(django.core.handlers.wsgi.WSGIHandler())
+application = Cling(application)

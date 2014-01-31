@@ -1,4 +1,4 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 
 PAD_NAME = '(?P<name>[A-Za-z\-0-9]+)'
 MAYBE_PAD_EXT = '(?P<ext>\.(css|js|html|txt))?'
