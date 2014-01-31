@@ -1,1 +1,2 @@
-collected-static
+venv
+*.pyc
