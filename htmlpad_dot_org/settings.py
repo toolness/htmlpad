@@ -157,7 +157,7 @@ LOGGING = {
 set_default_env(
     HTMLPAD_ROOT='',
     ETHERPAD_PROTOCOL='https',
-    ETHERPAD_HOST='etherpad.mozilla.org',
+    ETHERPAD_HOST='public.etherpad-mozilla.org',
 )
 
 HTMLPAD_ROOT = os.environ['HTMLPAD_ROOT']
