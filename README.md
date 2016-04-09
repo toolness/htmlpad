@@ -3,13 +3,13 @@
 By [Atul Varma][]
 
 This is a simple Web application that, for any URL path, serves the
-contents of an Etherpad with the same path with the MIME type
+contents of an [Etherpad][] with the same path with the MIME type
 `text/html`.
 
 For example, if the application is served from htmlpad.org and the
 Etherpad backend it's configured to use is at
 etherpad.mozilla.org:9000, then visiting http://htmlpad.org/foo
-will deliver the contents of http://etherpad.mozilla.org:9000/foo as
+will deliver the contents of https://public.etherpad-mozilla.org/p/foo as
 HTML.
 
 This effectively allows people to easily collaborate on writing HTML,
@@ -60,7 +60,7 @@ string), the boolean is true; otherwise, it's false.
 * `ETHERPAD_PROTOCOL` is the protocol of the Etherpad instance that
   your HTMLpad delegates to. Defaults to 'https'.
 * `ETHERPAD_HOST` is the Etherpad instance that your HTMLpad delegates to,
-  formatted as a hostname:port string. Defaults to 'etherpad.mozilla.org'.
+  formatted as a hostname:port string. Defaults to 'public.etherpad-mozilla.org'.
 
 ### Security Considerations ###
 
@@ -70,5 +70,6 @@ dedicated domain.
 
 <!-- Links -->
 
+  [Etherpad]: https://github.com/ether/etherpad-lite
   [twelve-factor]: http://12factor.net/
   [Atul Varma]: http://toolness.com
